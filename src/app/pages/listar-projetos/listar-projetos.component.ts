@@ -25,5 +25,23 @@ export class ListarProjetosComponent implements OnInit {
       //console.log(projetos);
     });
   }
+  // deleta um carro
+  deletarProjeto(car: Projeto) {
+    this.projetoService.deletarProjeto(car).subscribe(() => {
+      this.getProjetos();
+    });
+  }
+
+  // copia o carro para ser editado.
+  editarProjeto(projeto: Projeto) {
+
+    this.projeto = { ...projeto };
+    this.lS();
+  }
+
+  lS(){
+    const data = JSON.stringify(this.projeto);
+    localStorage.setItem('projetos', data)
+  }
 
 }
