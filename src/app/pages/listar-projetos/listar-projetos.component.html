@@ -20,6 +20,17 @@
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr *ngFor="let proj of projetos">
+                        <td>{{proj.id}}</td>
+                        <td>{{proj.nome}}</td>
+                        <td>{{proj.dataInicio}}</td>
+                        <td>{{proj.dataTermino}}</td>
+                        <td>{{proj.valor | currency:'BRL':true}}</td>
+                        <td>{{proj.risco}}</td>
+                        <td>{{proj.participantes}}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>

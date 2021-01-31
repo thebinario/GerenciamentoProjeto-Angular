@@ -7,6 +7,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CadastrarPageComponent } from './pages/cadastrar-page/cadastrar-page.component';
 import { ListarProjetosComponent } from './pages/listar-projetos/listar-projetos.component';
 import { AtualizarPageComponent } from './pages/atualizar-page/atualizar-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,13 @@ import { AtualizarPageComponent } from './pages/atualizar-page/atualizar-page.co
     HomePageComponent,
     CadastrarPageComponent,
     ListarProjetosComponent,
-    AtualizarPageComponent
+    AtualizarPageComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

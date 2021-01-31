@@ -1,4 +1,6 @@
+import { ProjetoService } from './../../shared/services/projeto.service';
 import { Component, OnInit } from '@angular/core';
+import { Projeto } from 'src/app/shared/models/projeto';
 
 @Component({
   selector: 'app-listar-projetos',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarProjetosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private projetoService: ProjetoService) {}
 
-  ngOnInit(): void {
+  projeto = {} as Projeto;
+  projetos: Projeto[];
+
+
+  ngOnInit() {
+    this.getProjetos();
+  }
+
+  getProjetos() {
+    this.projetoService.getProjetoService().subscribe((projetos: Projeto[]) => {
+      this.projetos = projetos;
+      //console.log(projetos);
+    });
   }
 
 }
