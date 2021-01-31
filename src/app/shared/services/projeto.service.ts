@@ -21,4 +21,9 @@ export class ProjetoService {
   getProjetoService(): Observable<Projeto[]> {
     return this.httpClient.get<Projeto[]>(this.url)
   }
+  // deleta um carro
+  deletarProjeto(projeto: Projeto) {
+    return this.httpClient.delete<Projeto>(this.url + '/' + projeto.id, this.httpOptions)
+
+  }
 }
