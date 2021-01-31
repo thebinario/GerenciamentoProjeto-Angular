@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Projetos;
 use Illuminate\Http\Request;
 
 class ProjetoController extends Controller
@@ -14,7 +15,8 @@ class ProjetoController extends Controller
      */
     public function index()
     {
-        //
+       $projetos = Projetos::all();
+       return $projetos;
     }
 
     /**
