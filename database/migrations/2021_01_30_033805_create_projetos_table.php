@@ -15,6 +15,12 @@ class CreateProjetosTable extends Migration
     {
         Schema::create('projetos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->date('dataInicio');
+            $table->date('dataTermino');
+            $table->float('valor');
+            $table->integer('risco');
+            $table->string('participantes');
             $table->timestamps();
         });
     }
