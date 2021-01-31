@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CadastrarPageComponent } from './pages/cadastrar-page/cadastrar-page.component';
 import { ListarProjetosComponent } from './pages/listar-projetos/listar-projetos.component';
+import { AtualizarPageComponent } from './pages/atualizar-page/atualizar-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     CadastrarPageComponent,
-    ListarProjetosComponent
+    ListarProjetosComponent,
+    AtualizarPageComponent
   ],
   imports: [
     BrowserModule,
