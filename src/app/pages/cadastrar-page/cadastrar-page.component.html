@@ -9,7 +9,7 @@
         <div class="card-body">
             <form id="add-form" (ngSubmit)="f.form.valid && salvarProjeto(f)" #f="ngForm" novalidate>
                 <div class="form-group">
-                    <input type="number" [(ngModel)]="projeto.id" id="id" name="id" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <input hidden type="number" [(ngModel)]="projeto.id" id="id" name="id" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
                     <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                         <div *ngIf="model.errors.required">campo é obrigatório</div>
                     </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label for="participantes">Participantes</label>
-                    <input type="text" [(ngModel)]="projeto.participantes" id="participantes" name="participante" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <input type="text" [(ngModel)]="projeto.participantes" id="participantes" name="participantes" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
                     <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                         <div *ngIf="model.errors.required">campo é obrigatório</div>
                     </div>
