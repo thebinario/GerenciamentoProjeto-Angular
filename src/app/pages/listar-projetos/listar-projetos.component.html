@@ -32,7 +32,7 @@
                         <td>
                             <div class="btn">
                                 <button type="button" class="btn btn-warning btn-sm" (click)="editarProjeto(proj)" (click)="goToPage('atualizar')">Editar</button>
-                                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deletarProjeto(proj)">Deletar</button>
+                                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="openDialog(proj)">Deletar</button>
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
                                   Simular
                                 </button>
@@ -69,9 +69,7 @@
                 </div>
             </div>
 
-            <p>
-                Investimento: <input type="text" [(ngModel)]="bodyText" />
-            </p>
+
 
         </div>
         <div class="modal-footer">

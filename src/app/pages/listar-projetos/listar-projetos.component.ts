@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Projeto } from 'src/app/shared/models/projeto';
 import { Router } from '@angular/router';
 
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { AlertConfirmDeleteComponent } from 'src/app/dialogs/alert-confirm-delete/alert-confirm-delete.component';
+
 @Component({
   selector: 'app-listar-projetos',
   templateUrl: './listar-projetos.component.html',
@@ -10,7 +13,32 @@ import { Router } from '@angular/router';
 })
 export class ListarProjetosComponent implements OnInit {
 
-  constructor(private projetoService: ProjetoService, private router:Router) {}
+  constructor(
+    private projetoService: ProjetoService,
+    private router:Router,
+    public dialog: MatDialog) {}
+
+    //dialog
+    openDialog(projeto: Projeto): void {
+      const dialogRef = this.dialog.open(AlertConfirmDeleteComponent, {
+        width: '250px',
+      });
+
+      /* this.projetoService.deletarProjeto(projeto).subscribe(() => {
+        this.getProjetos();
+      }); */
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+
+      });
+    }
+
+
+
+
+
+  // cosumindo api
   projeto = {} as Projeto;
   projetos: Projeto[];
 
@@ -29,14 +57,13 @@ export class ListarProjetosComponent implements OnInit {
       //console.log(projetos);
     });
   }
-  // deleta um carro
-  deletarProjeto(car: Projeto) {
-    this.projetoService.deletarProjeto(car).subscribe(() => {
+
+  deletarProjeto(projeto: Projeto) {
+    this.projetoService.deletarProjeto(projeto).subscribe(() => {
       this.getProjetos();
     });
   }
 
-  // copia o carro para ser editado.
   editarProjeto(projeto: Projeto) {
 
     this.projeto = { ...projeto };
@@ -47,5 +74,7 @@ export class ListarProjetosComponent implements OnInit {
     const data = JSON.stringify(this.projeto);
     localStorage.setItem('projetos', data)
   }
+
+
 
 }
