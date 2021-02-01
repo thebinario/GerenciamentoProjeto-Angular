@@ -8,6 +8,7 @@ import { CadastrarPageComponent } from './pages/cadastrar-page/cadastrar-page.co
 import { ListarProjetosComponent } from './pages/listar-projetos/listar-projetos.component';
 import { AtualizarPageComponent } from './pages/atualizar-page/atualizar-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
