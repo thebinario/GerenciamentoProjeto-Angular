@@ -9,6 +9,9 @@ import { ListarProjetosComponent } from './pages/listar-projetos/listar-projetos
 import { AtualizarPageComponent } from './pages/atualizar-page/atualizar-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AlertConfirmDeleteComponent } from './dialogs/alert-confirm-delete/alert-confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,16 @@ import { FormsModule } from '@angular/forms';
     CadastrarPageComponent,
     ListarProjetosComponent,
     AtualizarPageComponent,
+    AlertConfirmDeleteComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
