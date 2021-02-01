@@ -5,6 +5,6 @@ export interface Projeto{
   dataTermino: Date;
   valor: number;
   risco: number;
-  participante: string;
+  participantes: string;
 
 }
