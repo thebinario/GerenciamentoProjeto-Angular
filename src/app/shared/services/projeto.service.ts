@@ -12,18 +12,28 @@ export class ProjetoService {
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
+  proejto = {} as Projeto;
+  projetos: Projeto[];
 
-  // Headers
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
-  // Obtem todos os carros
+
   getProjetoService(): Observable<Projeto[]> {
     return this.httpClient.get<Projeto[]>(this.url)
   }
-  // deleta um carro
+  salvaProjeto(projeto: Projeto): Observable<Projeto> {
+    return this.httpClient.post<Projeto>(this.url, JSON.stringify(projeto), this.httpOptions)
+
+  }
   deletarProjeto(projeto: Projeto) {
     return this.httpClient.delete<Projeto>(this.url + '/' + projeto.id, this.httpOptions)
+
+  }
+
+  atualizarProjeto(projeto: Projeto): Observable<Projeto> {
+    return this.httpClient.put<Projeto>(this.url + '/' + projeto.id, JSON.stringify(projeto), this.httpOptions)
 
   }
 }
