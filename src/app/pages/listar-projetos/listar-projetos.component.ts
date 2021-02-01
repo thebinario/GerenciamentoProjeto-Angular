@@ -1,6 +1,7 @@
 import { ProjetoService } from './../../shared/services/projeto.service';
 import { Component, OnInit } from '@angular/core';
 import { Projeto } from 'src/app/shared/models/projeto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-projetos',
@@ -9,14 +10,17 @@ import { Projeto } from 'src/app/shared/models/projeto';
 })
 export class ListarProjetosComponent implements OnInit {
 
-  constructor(private projetoService: ProjetoService) {}
-
+  constructor(private projetoService: ProjetoService, private router:Router) {}
   projeto = {} as Projeto;
   projetos: Projeto[];
 
 
   ngOnInit() {
     this.getProjetos();
+  }
+
+  goToPage(pageName: String):void{
+    this.router.navigate([pageName])
   }
 
   getProjetos() {
