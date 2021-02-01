@@ -3,6 +3,7 @@ import { Projeto } from 'src/app/shared/models/projeto';
 import { ProjetoService } from 'src/app/shared/services/projeto.service';
 
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-atualizar-page',
@@ -11,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AtualizarPageComponent implements OnInit {
 
-  constructor(private projetoService: ProjetoService) {}
+  constructor(private projetoService: ProjetoService, private router:Router) {}
 
   projetoArr: Projeto[] = [JSON.parse(localStorage.getItem('projetos'))];
 
@@ -20,6 +21,10 @@ export class AtualizarPageComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  goToPage(pageName: String):void{
+    this.router.navigate([pageName])
   }
 
   // defini se um carro será criado ou atualizado
@@ -35,6 +40,7 @@ export class AtualizarPageComponent implements OnInit {
         this.cleanForm(form);
       });
     }
+    this.goToPage('projetos');
   }
 
   cleanForm(form: NgForm) {
