@@ -1,1 +1,65 @@
-<p>atualizar-page works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Projetos</li>
+    </ol>
+</nav>
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Cadastrar novos Projetos</h5>
+        <div class="card-body">
+            <form *ngFor="let projeto of projetoArr" id="add-form" (ngSubmit)="f.form.valid && salvarProjeto(f)" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <input type="number" [(ngModel)]="projeto.id" id="id" name="id" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                        <div *ngIf="model.errors.required">campo é obrigatório</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" [(ngModel)]="projeto.nome" id="nome" name="nome" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                        <div *ngIf="model.errors.required">campo é obrigatório</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dataInicio">inicio</label>
+                    <input type="text" [(ngModel)]="projeto.dataInicio" id="dataInicio" name="dataInicio" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                        <div *ngIf="model.errors.required">campo é obrigatório</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dataTermino">termino</label>
+                    <input type="text" [(ngModel)]="projeto.dataTermino" id="dataTermino" name="dataTermino" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                        <div *ngIf="model.errors.required">campo é obrigatório</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="number" [(ngModel)]="projeto.valor" id="valor" name="valor" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                        <div *ngIf="model.errors.required">campo é obrigatório</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="risco">Risco</label>
+                    <input type="number" [(ngModel)]="projeto.risco" id="risco" name="risco" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                        <div *ngIf="model.errors.required">campo é obrigatório</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="participante">Participantes</label>
+                    <input type="text" [(ngModel)]="projeto.participante" id="participante" name="participante" #model="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+                    <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                        <div *ngIf="model.errors.required">campo é obrigatório</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-add-proj">Atualizar</button>
+                <button type="reset" class="btn btn-secondary btn-add-proj" (click)="cleanForm(f)">Cancelar</button>
+            </form>
+        </div>
+    </div>
+</div>
