@@ -36,4 +36,10 @@ export class ProjetoService {
     return this.httpClient.put<Projeto>(this.url + '/' + projeto.id, JSON.stringify(projeto), this.httpOptions)
 
   }
+
+
+  //ModalDelete
+  remove(id){
+    return this.httpClient.delete(this.url + '/' + id);
+  }
 }

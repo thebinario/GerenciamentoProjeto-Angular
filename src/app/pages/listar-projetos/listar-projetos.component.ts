@@ -1,10 +1,10 @@
 import { ProjetoService } from './../../shared/services/projeto.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Projeto } from 'src/app/shared/models/projeto';
 import { Router } from '@angular/router';
 
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { AlertConfirmDeleteComponent } from 'src/app/dialogs/alert-confirm-delete/alert-confirm-delete.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-listar-projetos',
@@ -13,32 +13,39 @@ import { AlertConfirmDeleteComponent } from 'src/app/dialogs/alert-confirm-delet
 })
 export class ListarProjetosComponent implements OnInit {
 
+  deleteModalRef: BsModalRef;
+  @ViewChild('deleteModal') deleteModal;
+  projetoSelecionado: Projeto;
+
   constructor(
     private projetoService: ProjetoService,
     private router:Router,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog,
+    private modalService: BsModalService,
+    ) {}
 
-    //dialog
-    openDialog(projeto: Projeto): void {
-      const dialogRef = this.dialog.open(AlertConfirmDeleteComponent, {
-        width: '250px',
-      });
+  //dialog
+  onDelete(projeto: Projeto){
+    this.projetoSelecionado = projeto;
+    this.deleteModalRef = this.modalService.show(this.deleteModal, {class: 'modal-sm'});
 
-      /* this.projetoService.deletarProjeto(projeto).subscribe(() => {
-        this.getProjetos();
-      }); */
+  }
 
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
+  onConfirmDelete(){
+    this.projetoService.remove(this.projetoSelecionado.id)
+    .subscribe(
+      success => console.log('success')
+    );
 
-      });
-    }
+    this.deleteModalRef.hide();
+  }
+
+  onDeclineDelete(){
+    this.deleteModalRef.hide();
+  }
 
 
-
-
-
-  // cosumindo api
+  // cosumindo api /////////////////////////////////
   projeto = {} as Projeto;
   projetos: Projeto[];
 
