@@ -33,6 +33,7 @@
                             <div class="btn">
                                 <button type="button" class="btn btn-warning btn-sm" (click)="editarProjeto(proj)" (click)="goToPage('atualizar')">Editar</button>
                                 <button type="button" class="btn btn-danger btn-sm ml-1" (click)="onDelete(proj)">Deletar</button>
+                                <button type="button" class="btn btn-success btn-sm ml-1" (click)="onSimular(proj)">Simular</button>
                             </div>
                         </td>
                     </tr>
@@ -50,5 +51,20 @@
         <p>Realmente deseja deletar?</p>
         <button type="button " class="btn btn-default " (click)="onConfirmDelete(proj)">Sim</button>
         <button type="button " class="btn btn-primary " (click)="onDeclineDelete()">Não</button>
+    </div>
+</ng-template>
+
+
+<!--modal de simulacaor-->
+<ng-template #simulacaoModal>
+    <div class="modal-header">
+        <h3 class="modal-title pull-left">Simuler seu invertimento</h3>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseSimular()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <h4>Valor do Projeto:{{valorSimulado| currency:'BRL':true }}</h4>
+        <!-- <span class="btn"><input type="number">  <button type="button " class="btn btn-primary btn-sm " (click)="onDeclineDelete()">Simular</button></span> -->
     </div>
 </ng-template>

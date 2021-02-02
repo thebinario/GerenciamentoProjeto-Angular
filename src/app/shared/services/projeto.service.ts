@@ -8,6 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class ProjetoService {
 
+  simular(valor: number) {
+
+    throw new Error('Method not implemented.');
+  }
+
   url = 'http://127.0.0.1:8000/api/projetos'; // api
 
   // injetando o HttpClient
