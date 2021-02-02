@@ -11,8 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AlertConfirmDeleteComponent } from './dialogs/alert-confirm-delete/alert-confirm-delete.component';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +19,6 @@ import { AlertConfirmDeleteComponent } from './dialogs/alert-confirm-delete/aler
     CadastrarPageComponent,
     ListarProjetosComponent,
     AtualizarPageComponent,
-    AlertConfirmDeleteComponent,
 
   ],
   imports: [
@@ -29,7 +27,8 @@ import { AlertConfirmDeleteComponent } from './dialogs/alert-confirm-delete/aler
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
