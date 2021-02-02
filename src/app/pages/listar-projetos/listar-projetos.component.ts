@@ -56,9 +56,13 @@ export class ListarProjetosComponent implements OnInit {
 
   }
   simular(){
-   if(this.projetoSelecionado.risco == 1 ) this.valorSimulado = this.projetoSelecionado.valor * 2;
-   if(this.projetoSelecionado.risco == 2  ) this.valorSimulado = this.projetoSelecionado.valor * 3;
-   if(this.projetoSelecionado.risco == 3  ) this.valorSimulado = this.projetoSelecionado.valor * 4;
+    //regra de negicio para simular invetimento
+    // 1 => 5%
+    // 2 => 10%
+    // 3 => 20%
+   if(this.projetoSelecionado.risco == 1 ) this.valorSimulado = this.projetoSelecionado.valor * 0.05;
+   if(this.projetoSelecionado.risco == 2  ) this.valorSimulado = this.projetoSelecionado.valor * 0.1;
+   if(this.projetoSelecionado.risco == 3  ) this.valorSimulado = this.projetoSelecionado.valor * 0.2;
   }
   onCloseSimular(){
     this.simularModalRef.hide();
