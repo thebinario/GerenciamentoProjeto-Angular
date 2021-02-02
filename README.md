@@ -2,11 +2,13 @@
   1. Node.js
   2. Npm
   3. Angular Cli
+  4. Angular Material
+  5. ngx-bootstrap
 
-# Como utilizar
+# Como utilizar o Frontend
   1. Faça download do repositório:
   ```
-  git clone https://gitlab.com/Erictondeveloper/ade-physical.git
+  git clone https://github.com/thebinario/GerenciamentoProjeto-Angular.git
 
   ```
   2. Abra a pasta e instale as dependecias com o comando:
