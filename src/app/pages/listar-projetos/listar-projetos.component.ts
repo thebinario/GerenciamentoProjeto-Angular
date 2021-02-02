@@ -17,6 +17,10 @@ export class ListarProjetosComponent implements OnInit {
   @ViewChild('deleteModal') deleteModal;
   projetoSelecionado: Projeto;
 
+  simularModalRef: BsModalRef;
+  @ViewChild('simulacaoModal') simulacaoModal;
+  valorSimulado: Number;
+
   constructor(
     private projetoService: ProjetoService,
     private router:Router,
@@ -42,6 +46,23 @@ export class ListarProjetosComponent implements OnInit {
 
   onDeclineDelete(){
     this.deleteModalRef.hide();
+  }
+
+  //dialog simulacao
+  onSimular(projeto: Projeto){
+    this.projetoSelecionado = projeto;
+    this.simularModalRef = this.modalService.show(this.simulacaoModal, {class: 'modal-sm'});
+    this.simular();
+
+  }
+  simular(){
+   if(this.projetoSelecionado.risco == 1 ) this.valorSimulado = this.projetoSelecionado.valor * 2;
+   if(this.projetoSelecionado.risco == 2  ) this.valorSimulado = this.projetoSelecionado.valor * 3;
+   if(this.projetoSelecionado.risco == 3  ) this.valorSimulado = this.projetoSelecionado.valor * 4;
+  }
+  onCloseSimular(){
+    this.simularModalRef.hide();
+
   }
 
 
