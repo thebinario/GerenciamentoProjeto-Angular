@@ -7,6 +7,9 @@
     <div class="card list-car">
         <h5 class="card-header">Lista de carros</h5>
         <div class="card-body">
+            <button type="button" class="btn btn-normal btn-sm ml-1" (click)="previuspage()">Anterior</button>
+            <button type="button" class="btn btn-normal btn-sm ml-1" (click)="nextpage()">Próximo</button>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -21,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let proj of projetos">
+                    <tr *ngFor="let proj of getProjetModel['data']">
                         <td>{{proj.id}}</td>
                         <td>{{proj.nome}}</td>
                         <td>{{proj.dataInicio}}</td>
@@ -39,7 +42,9 @@
                     </tr>
                 </tbody>
             </table>
+            <h3 *ngIf="getProjetModel == null" align="center"> Nenhum dado encontrado!! </h3>
         </div>
+
     </div>
 
 </div>

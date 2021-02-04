@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { GetProjeto } from 'src/app/shared/models/getProjeto.model';
 
 @Component({
   selector: 'app-listar-projetos',
@@ -28,7 +29,10 @@ export class ListarProjetosComponent implements OnInit {
     private modalService: BsModalService,
     ) {}
 
-  //dialog
+    ngOnInit() {
+      this.getProjetos();
+    }
+   //dialog
   onDelete(projeto: Projeto){
     this.projetoSelecionado = projeto;
     this.deleteModalRef = this.modalService.show(this.deleteModal, {class: 'modal-sm'});
@@ -38,7 +42,7 @@ export class ListarProjetosComponent implements OnInit {
   onConfirmDelete(){
     this.projetoService.remove(this.projetoSelecionado.id)
     .subscribe(
-      success => console.log('success')
+      success => this.projetoService.onRefresh()
     );
 
     this.deleteModalRef.hide();
@@ -74,19 +78,33 @@ export class ListarProjetosComponent implements OnInit {
   projeto = {} as Projeto;
   projetos: Projeto[];
 
+  getProjetModel: GetProjeto[];
 
-  ngOnInit() {
-    this.getProjetos();
-  }
 
   goToPage(pageName: String):void{
     this.router.navigate([pageName])
   }
 
+  nextpage(){
+    console.log();
+    this.projetoService.nextPage().subscribe((getProjetModel: GetProjeto[]) => {
+      this.getProjetModel = getProjetModel;
+     // console.log(this.getProjetModel);
+    });
+
+  }
+  previuspage(){
+    this.projetoService.previusPage().subscribe((getProjetModel: GetProjeto[]) => {
+      this.getProjetModel = getProjetModel;
+      console.log(this.getProjetModel);
+    });
+
+  }
+
   getProjetos() {
-    this.projetoService.getProjetoService().subscribe((projetos: Projeto[]) => {
-      this.projetos = projetos;
-      //console.log(projetos);
+    this.projetoService.getProjetoService().subscribe((getProjetModel: GetProjeto[]) => {
+      this.getProjetModel = getProjetModel;
+      console.log(this.getProjetModel);
     });
   }
 
