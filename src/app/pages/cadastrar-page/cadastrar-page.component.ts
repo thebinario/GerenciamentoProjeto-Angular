@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GetProjeto } from 'src/app/shared/models/getProjeto.model';
 import { Projeto } from 'src/app/shared/models/projeto';
 import { ProjetoService } from 'src/app/shared/services/projeto.service';
 
@@ -16,6 +17,8 @@ export class CadastrarPageComponent implements OnInit {
   projeto = {} as Projeto;
   projetos: Projeto[];
 
+  getProjetModel: GetProjeto[];
+
   goToPage(pageName: String):void{
     this.router.navigate([pageName])
   }
@@ -25,8 +28,8 @@ export class CadastrarPageComponent implements OnInit {
   }
 
   getProjetos() {
-    this.projetoService.getProjetoService().subscribe((projetos: Projeto[]) => {
-      this.projetos = projetos;
+    this.projetoService.getProjetoService().subscribe((projetos: GetProjeto[]) => {
+      this.getProjetModel = projetos;
       //console.log(projetos);
     });
   }

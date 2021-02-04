@@ -1,3 +1,4 @@
+import { GetProjeto } from './../models/getProjeto.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Projeto } from '../models/projeto';
@@ -19,14 +20,32 @@ export class ProjetoService {
   constructor(private httpClient: HttpClient) { }
   proejto = {} as Projeto;
   projetos: Projeto[];
+  getProjetModel: GetProjeto[];
+
+  idPage = 1 ;
+  last_page: GetProjeto['last_page'];
 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  getProjetoService(): Observable<Projeto[]> {
-    return this.httpClient.get<Projeto[]>(this.url)
+  nextPage(): Observable<GetProjeto[]> {
+    this.idPage += 1;
+    return this.httpClient.get<GetProjeto[]>(this.url + '?page=' + this.idPage)
+
+  }
+
+  previusPage(): Observable<GetProjeto[]> {
+
+    this.idPage -= 1;
+
+    return this.httpClient.get<GetProjeto[]>(this.url + '?page=' + this.idPage)
+
+  }
+
+  getProjetoService(): Observable<GetProjeto[]> {
+    return this.httpClient.get<GetProjeto[]>(this.url)
   }
   salvaProjeto(projeto: Projeto): Observable<Projeto> {
     return this.httpClient.post<Projeto>(this.url, JSON.stringify(projeto), this.httpOptions)
