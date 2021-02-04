@@ -42,6 +42,11 @@ export class ProjetoService {
 
   }
 
+  onRefresh(){
+    window.location.reload();
+    console.log('success');
+  }
+
 
   //ModalDelete
   remove(id){
