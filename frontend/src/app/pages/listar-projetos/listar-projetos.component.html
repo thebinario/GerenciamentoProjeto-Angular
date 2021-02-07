@@ -5,15 +5,43 @@
 </nav>
 <div class="container">
     <div class="card list-car">
-        <h5 class="card-header">Lista de carros</h5>
+        <h4 class="card-header">Lista de Projetos</h4>
         <div class="card-body">
-            <button type="button" class="btn btn-normal btn-sm ml-1" (click)="previuspage()">Anterior</button>
-            <button type="button" class="btn btn-normal btn-sm ml-1" (click)="nextpage()">Próximo</button>
+            <div class="container">
+                <div class="row btn-between">
+                    <div class="btn">
+                        <div class="btn btn-succes btn-pagination">
+                            <div class="btn btn-success btn-sm ml-1" (click)="previuspage()">
+                                <span class="btn-pagination">
+                                  <mat-icon >keyboard_arrow_left</mat-icon>
+                                <span>Anterior</span>
+                                </span>
+                            </div>
+                            <div class="btn btn-success btn-sm ml-1" (click)="nextpage()">
+                                <span class="btn-pagination">
+                                  <span>Próximo</span>
+                                <mat-icon>keyboard_arrow_right</mat-icon>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <div class="btn btn-succes">
+                            <div class=" btn btn-success btn-sm" align="end" (click)="atualizar()">
+                                <span class="btn-atualizar">
+                              <mat-icon >refresh</mat-icon>
+                            <span>Atualizar</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col">#</th>
                         <th scope="col">Projeto</th>
                         <th scope="col">inicio</th>
                         <th scope="col">termino</th>
@@ -33,11 +61,11 @@
                         <td>{{proj.risco}}</td>
                         <td>{{proj.participantes}}</td>
                         <td>
-                            <div class="btn">
+                            <span class="btn">
                                 <mat-icon (click)="editarProjeto(proj)" (click)="goToPage('atualizar')">refresh</mat-icon>
                                 <mat-icon (click)="onDelete(proj)">delete</mat-icon>
                                 <mat-icon (click)="onSimular(proj)">trending_up</mat-icon>
-                            </div>
+                            </span>
                         </td>
                     </tr>
                 </tbody>

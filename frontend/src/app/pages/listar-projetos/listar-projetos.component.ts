@@ -125,6 +125,10 @@ export class ListarProjetosComponent implements OnInit {
     localStorage.setItem('projetos', data)
   }
 
+  atualizar(){
+    this.getProjetos();
+  }
+
 
 
 }

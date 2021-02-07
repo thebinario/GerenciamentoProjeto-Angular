@@ -1,0 +1,12 @@
+.btn-atualizar {
+    display: flex;
+}
+
+.btn-between {
+    justify-content: space-between;
+}
+
+.btn-pagination {
+    display: flex;
+    justify-content: space-around;
+}
