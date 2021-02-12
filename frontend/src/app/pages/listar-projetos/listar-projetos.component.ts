@@ -79,6 +79,7 @@ export class ListarProjetosComponent implements OnInit {
   projetos: Projeto[];
 
   getProjetModel: GetProjeto[];
+  getParticipantes: GetProjeto['data'];
 
 
   goToPage(pageName: String):void{
@@ -96,6 +97,7 @@ export class ListarProjetosComponent implements OnInit {
   previuspage(){
     this.projetoService.previusPage().subscribe((getProjetModel: GetProjeto[]) => {
       this.getProjetModel = getProjetModel;
+      this.getParticipantes = getProjetModel['data']['participantes'];
       console.log(this.getProjetModel);
     });
 
@@ -104,7 +106,8 @@ export class ListarProjetosComponent implements OnInit {
   getProjetos() {
     this.projetoService.getProjetoService().subscribe((getProjetModel: GetProjeto[]) => {
       this.getProjetModel = getProjetModel;
-      console.log(this.getProjetModel);
+
+      console.log(this.getParticipantes);
     });
   }
 

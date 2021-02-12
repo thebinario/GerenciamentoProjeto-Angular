@@ -41,7 +41,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Projeto</th>
                         <th scope="col">inicio</th>
                         <th scope="col">termino</th>
@@ -53,24 +52,31 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let proj of getProjetModel['data']">
-                        <td>{{proj.id}}</td>
-                        <td>{{proj.nome}}</td>
-                        <td>{{proj.dataInicio}}</td>
-                        <td>{{proj.dataTermino}}</td>
-                        <td>{{proj.valor | currency:'BRL':true}}</td>
-                        <td>{{proj.risco}}</td>
-                        <td>{{proj.participantes}}</td>
+                        <td scope="col">{{proj.nome}}</td>
+                        <td scope="col">{{proj.dataInicio}}</td>
+                        <td scope="col">{{proj.dataTermino}}</td>
+                        <td scope="col">{{proj.valor | currency:'BRL':true}}</td>
+                        <td scope="col">{{proj.risco}}</td>
+                        <!-- <td>{{proj.participantes}}</td> -->
+                        <td class="chipsWidght">
+                            <div class="row">
+                                <mat-chip-list *ngFor="let p of proj.participantes.split(' ')">
+                                    <mat-chip>{{p}}</mat-chip>
+                                </mat-chip-list>
+                            </div>
+                        </td>
+
                         <td>
-                            <span class="btn">
-                                <mat-icon (click)="editarProjeto(proj)" (click)="goToPage('atualizar')">refresh</mat-icon>
-                                <mat-icon (click)="onDelete(proj)">delete</mat-icon>
-                                <mat-icon (click)="onSimular(proj)">trending_up</mat-icon>
+                            <span class=" btn ">
+                                <mat-icon (click)="editarProjeto(proj) " (click)="goToPage( 'atualizar') ">refresh</mat-icon>
+                                <mat-icon (click)="onDelete(proj) ">delete</mat-icon>
+                                <mat-icon (click)="onSimular(proj) ">trending_up</mat-icon>
                             </span>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <h3 *ngIf="getProjetModel == null" align="center"> Nenhum dado encontrado!! </h3>
+            <h3 *ngIf="getProjetModel==null " align="center "> Nenhum dado encontrado!! </h3>
         </div>
 
     </div>
@@ -82,8 +88,8 @@
 <ng-template #deleteModal>
     <div class=" modal-body text-center ">
         <p>Realmente deseja deletar?</p>
-        <button type="button " class="btn btn-default " (click)="onConfirmDelete(proj)">Sim</button>
-        <button type="button " class="btn btn-primary " (click)="onDeclineDelete()">Não</button>
+        <button type="button " class="btn btn-default " (click)="onConfirmDelete(proj) ">Sim</button>
+        <button type="button " class="btn btn-primary " (click)="onDeclineDelete() ">Não</button>
 
     </div>
 </ng-template>
@@ -91,14 +97,14 @@
 
 <!--modal de simulacaor-->
 <ng-template #simulacaoModal>
-    <div class="modal-header">
-        <h3 class="modal-title pull-left">Simuler seu invertimento</h3>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseSimular()">
-      <span aria-hidden="true">&times;</span>
+    <div class="modal-header ">
+        <h3 class="modal-title pull-left ">Simuler seu invertimento</h3>
+        <button type="button " class="close pull-right " aria-label="Close " (click)="onCloseSimular() ">
+      <span aria-hidden="true ">&times;</span>
     </button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body ">
         <h4>Valor do Projeto:{{valorSimulado| currency:'BRL':true }}</h4>
-        <!-- <span class="btn"><input type="number">  <button type="button " class="btn btn-primary btn-sm " (click)="onDeclineDelete()">Simular</button></span> -->
+        <!-- <span class="btn "><input type="number ">  <button type="button " class="btn btn-primary btn-sm " (click)="onDeclineDelete() ">Simular</button></span> -->
     </div>
 </ng-template>
