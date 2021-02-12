@@ -6,19 +6,22 @@
     <div class="collapse navbar-collapse " id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link textColor" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link textColor" href="/home">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="mostrarMenu">
                 <a class="nav-link textColor" href="/projetos">Gerenciamento</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="mostrarMenu">
                 <a class="nav-link textColor" href="/cadastrar">Cadastrar</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link textColor" href="#">Sobre</a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link disabled" href="#">Login</a>
+            <li class="nav-item " *ngIf="!mostrarMenu">
+                <a class="nav-link " href="/login">Login</a>
+            </li>
+            <li class="nav-item " *ngIf="mostrarMenu">
+                <a class="nav-link " href="#" (click)="sair()">Logout</a>
             </li>
         </ul>
     </div>

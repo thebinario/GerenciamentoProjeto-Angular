@@ -1,3 +1,4 @@
+import { AuthGuard } from './guard/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {MatIconModule} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './pages/login/auth.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
     CadastrarPageComponent,
     ListarProjetosComponent,
     AtualizarPageComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -32,8 +37,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     ModalModule.forRoot(),
     MatIconModule,
+    MatChipsModule,
+
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
